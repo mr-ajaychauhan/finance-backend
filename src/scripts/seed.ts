@@ -76,6 +76,7 @@ async function seed() {
     for (const user of users) {
       const userTransactions = sampleTransactions.map((transaction, index) => ({
         ...transaction,
+        type: transaction.type as any, // Cast to enum type if TransactionType is not imported
         userId: user.id,
         date: new Date(Date.now() - (index * 24 * 60 * 60 * 1000)), // Spread over last few days
       }));
